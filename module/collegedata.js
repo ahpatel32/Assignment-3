@@ -13,7 +13,7 @@
     function initialize() {
         return new Promise((resolve, reject) => {
             //defining a constant variable with the datafolder path values.
-            const datafolderpath = 'D:/BTT - 2024/Sem 2/WEB700/Assignment-4';
+            const datafolderpath = 'D:/BTT - 2024/Sem 2/WEB700/Assignment-3';
 
             //reading the courses.json file
             fs.readFile(path.join(datafolderpath, 'data', 'courses.json'), 'utf8', (err, courseData) => {
