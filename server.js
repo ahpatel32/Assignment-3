@@ -121,26 +121,26 @@ var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
     app.use(express.urlencoded({ extended: true }));
 
 
+    // Setting up the Views directory
+    app.set('Views', __dirname + '/Views');
+
     // Route to serve HTML pages
     app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname, 'views', 'home'));
+        res.sendFile(path.join(__dirname, 'Views', 'home'));
     });
 
     app.get("/about", (req, res) => {
-        res.sendFile(path.join(__dirname, 'views', 'about'));
+        res.sendFile(path.join(__dirname, 'Views', 'about'));
     });
 
     app.get("/htmlDemo", (req, res) => {
-        res.sendFile(path.join(__dirname, 'views', 'htmldemo'));
+        res.sendFile(path.join(__dirname, 'Views', 'htmldemo'));
     });
 
     // Route to add the student.
     app.get("/students/add", (req, res) => {
-        res.sendFile(path.join(__dirname, 'views', 'addStudents'))
+        res.sendFile(path.join(__dirname, 'Views', 'addStudents'))
     })
-
-        // Setting up the Views directory
-        app.set('views', __dirname + '/views');
 
     app.post('/students/add', (req, res) => {
         collegeData.addStudent(req.body)
