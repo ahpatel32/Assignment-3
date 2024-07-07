@@ -13,8 +13,6 @@ var path = require("path");
 var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-4/module/collegedata");
 var HTTP_PORT = process.env.PORT || 8080;
 var app = express();
-require('pg'); // explicitly require the "pg" module
-const Sequelize = require('sequelize');
 
     // First GET /students or GET /students?course=value Route to get all students or students by course
     app.get("/students", (req, res) => {
