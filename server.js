@@ -10,7 +10,7 @@
 
 var express = require("express");
 var path = require("path");
-var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-4/module/collegedata");
+var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-3/module/collegedata");
 var HTTP_PORT = process.env.PORT || 8080;
 var app = express();
 
