@@ -117,6 +117,7 @@
 
     function addStudent(studentData) {
         return new Promise((resolve, reject) => {
+            //condition to update the TA field in the student.json file.
             if (studentData.TA === undefined)
             {
                 studentData.TA = false;
@@ -125,8 +126,9 @@
             {
                 studentData.TA = true;
             }
-            
+            //Incrementing the studentNum and assigning the value to the StudentNUm
             studentData.studentNum = dataCollection.students.length + 1;
+            //pushing the whole record to our file
             dataCollection.students.push(studentData);
             resolve();
 
