@@ -1,19 +1,20 @@
 /*********************************************************************************
-*  WEB700 – Assignment 03
+*  WEB700 – Assignment 04
 *  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part 
 *  of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name: Aakash Harendrakumar Patel Student ID: 147805238 Date: 20/06/2024
+*  Name: Aakash Harendrakumar Patel Student ID: 147805238 Date: 07/07/2024
 *
 ********************************************************************************/
 
 var express = require("express");
 var path = require("path");
-var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-3/module/collegedata");
+var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-4/module/collegedata");
 var HTTP_PORT = process.env.PORT || 8080;
 var app = express();
-
+require('pg'); // explicitly require the "pg" module
+const Sequelize = require('sequelize');
 
     // First GET /students or GET /students?course=value Route to get all students or students by course
     app.get("/students", (req, res) => {
@@ -113,6 +114,16 @@ var app = express();
             });
     });
 
+    //Static route to public folder - used to use the custom css files.
+    app.use(express.static(path.join(__dirname, "public")))
+
+
+    // Middleware to parse URL-encoded data - used to add students.
+    app.use(express.urlencoded({ extended: true }));
+
+    // Setting up the Views directory
+    app.set('views', __dirname + '/views');
+
     // Route to serve HTML pages
     app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "/views/home.html"));
@@ -126,10 +137,25 @@ var app = express();
         res.sendFile(path.join(__dirname, "/views/htmlDemo.html"));
     });
 
+    // Route to add the student.
+    app.get("/students/add", (req, res) => {
+        res.sendFile(path.join(__dirname,"/views/addStudents.html"))
+    })
+
+    app.post('/students/add', (req, res) => {
+        collegeData.addStudent(req.body)
+            .then(() => {
+                res.redirect('/students'); // Redirect to the students page after adding the student
+            })
+            .catch((err) => {
+                res.status(500).send('Unable to add student');
+            });
+    });      
+
     // Route for handling 404 errors
     app.use((req, res) => {
         res.status(404).json({ message: "Page Not Found" })});
-
+    
     //creating the initialize method to initiate the server only if we are able to access the collegedata.js
     collegeData.initialize()
         .then(() => {
