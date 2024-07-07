@@ -168,3 +168,5 @@ var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
         .catch((err) => {
             console.error("Initialization failed:", err);
         });
+    
+    module.exports = app;
