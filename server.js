@@ -122,24 +122,24 @@ var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
 
 
     // Setting up the Views directory
-    //app.set('Views', __dirname + '/Views');
+    app.set('views', __dirname + '/views');
 
     // Route to serve HTML pages
     app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname, 'Views', 'home'));
+        res.sendFile(path.join(__dirname, 'views', 'home.html'));
     });
 
     app.get("/about", (req, res) => {
-        res.sendFile(path.join(__dirname, 'Views', 'about'));
+        res.sendFile(path.join(__dirname, 'views', 'about.html'));
     });
 
     app.get("/htmlDemo", (req, res) => {
-        res.sendFile(path.join(__dirname, 'Views', 'htmldemo'));
+        res.sendFile(path.join(__dirname, 'views', 'htmldemo.html'));
     });
 
     // Route to add the student.
     app.get("/students/add", (req, res) => {
-        res.sendFile(path.join(__dirname, 'Views', 'addStudents'))
+        res.sendFile(path.join(__dirname, 'views', 'addStudents.html'))
     })
 
     app.post('/students/add', (req, res) => {
