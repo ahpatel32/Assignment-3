@@ -10,9 +10,10 @@
 
 var express = require("express");
 var path = require("path");
-var collegeData = require("D:/BTT - 2024/Sem 2/WEB700/Assignment-3/module/collegedata.js");
 var HTTP_PORT = process.env.PORT || 8080;
 var app = express();
+var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
+
 
     // First GET /students or GET /students?course=value Route to get all students or students by course
     app.get("/students", (req, res) => {
