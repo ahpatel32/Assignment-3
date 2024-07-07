@@ -122,7 +122,7 @@ var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
 
 
     // Setting up the Views directory
-    app.set('Views', __dirname + '/Views');
+    //app.set('Views', __dirname + '/Views');
 
     // Route to serve HTML pages
     app.get("/", (req, res) => {
