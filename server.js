@@ -120,10 +120,6 @@ var collegeData = require(path.join(__dirname, 'module', 'collegedata'));
     // Middleware to parse URL-encoded data - used to add students.
     app.use(express.urlencoded({ extended: true }));
 
-
-    // Setting up the Views directory
-    app.set('views', __dirname + '/views');
-
     // Route to serve HTML pages
     app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, '"./views/home.html"'));
